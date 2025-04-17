@@ -1,0 +1,90 @@
+<div class="text-center py-5">
+    <h1 class="mb-4 fw-bold">¡MIS 15 MAI!</h1>
+    <div id="countdown" class="countdown-timer">
+        <div class="time-block">
+            <span id="days" class="time-value">--</span>
+            <span class="time-label">DÍAS</span>
+        </div>
+        <div class="time-block">
+            <span id="hours" class="time-value">--</span>
+            <span class="time-label">HORAS</span>
+        </div>
+        <div class="time-block">
+            <span id="minutes" class="time-value">--</span>
+            <span class="time-label">MINUTOS</span>
+        </div>
+        <div class="time-block">
+            <span id="seconds" class="time-value">--</span>
+            <span class="time-label">SEGUNDOS</span>
+        </div>
+    </div>
+</div>
+
+<style>
+    #countdown {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .countdown-timer {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        gap: 15px;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .time-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: rgb(0, 0, 0);
+        padding: 15px;
+        width: calc(20% - 10px);
+        max-width: 19%;
+        min-width: 21%;
+        text-align: center;
+        background-color: #f3f3f3;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .time-value {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    .time-label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-top: 5px;
+        text-transform: uppercase;
+        color: #000000;
+        letter-spacing: 1px;
+    }
+</style>
+
+<script>
+    const eventDate = new Date('June 7, 2025 21:00:00').getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const difference = eventDate - now;
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById("days").textContent = days;
+        document.getElementById("hours").textContent = hours;
+        document.getElementById("minutes").textContent = minutes;
+        document.getElementById("seconds").textContent = seconds;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown(); // Ejecutar una vez al cargar
+</script>
